@@ -1,0 +1,12 @@
+<div>
+    <div>
+        <label>Mobile Number</label> 
+        <input ng-model="mobile.number" type="number" ng-change="queryNumber()" required/>
+    </div>
+    <div>
+        <label>{{ mobile.validations }}</label>
+    </div>
+    <div>
+        <button ng-disabled="!mobile.status"/>Next</button>
+    </div>
+</div>

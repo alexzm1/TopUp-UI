@@ -1,8 +1,7 @@
 <!doctype html>
-<html class="no-js" ng-app="app">
-  <head ng-controller="AppController">
+<html class="no-js" ng-app="appTopUp">
+  <head>
     <meta charset="utf-8">
-    <title></title>
     <meta name="description" content="">
     <meta name="viewport" content="width=device-width">
     <!-- Place favicon.ico and apple-touch-icon.png in the root directory -->
@@ -29,40 +28,23 @@
     <!-- endbuild -->
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
+    <script src="scripts/app.js"></script>
     <!-- Start: Services -->
-    <script src="scripts/services/MobileNumberService.js"></script>
+    <script src="scripts/service/anonymous-services.js"></script>
     <!-- Finish: Services -->
     <!-- Start: Controllers -->
-    <script src="scripts/controllers/AppController.js"></script>
-    <script src="scripts/controllers/QueryController.js"></script>
+    <script src="scripts/controllers/anonymous/query-controller.js"></script>
     <!-- Finish: Controllers -->
-    <script src="scripts/servicesFactory.js"></script>
-    <script src="scripts/app.js"></script>
     <!-- endbuild -->
-      
-      
-      
-    <title>Top Up {{ app.tittle }} </title>
+    <title>Top Up {app.title}</title>
   </head>
-  <body ng-app="topUpUiApp">
+  <body>
     <!--[if lt IE 7]>
       <p class="browsehappy">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
     <![endif]-->
 
     <!-- Add your site or application content here -->
-    <div ng-controller="QueryController">
-        <div>
-            <label>Mobile Number</label> 
-            <input ng-model="mobile.number" type="text"/>
-        </div>
-        <div>
-            <label>{{ validations.mobileNumber }}</label>
-        </div>
-        <div>
-            <button ng-show="mobile.status"/>Next</button>
-        </div>
-    </div>
-
-</body>
+    <div ng-view></div>
+  </body>
     
 </html>
