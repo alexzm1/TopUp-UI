@@ -9,6 +9,7 @@ angular.module('appTopUp', ['anonymousServices', 'ngRoute']
                 redirectTo:'/anonymous/step1'
             }).when('/anonymous/step1', {
                 templateUrl: 'templates/anonymous/mobile-number-form.html',
+                controllerAs: 'main',
                 controller: 'queryController'
             }).otherwise({
                 templateUrl: '404.html'

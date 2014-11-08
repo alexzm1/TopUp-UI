@@ -6,38 +6,39 @@
 angular.module('appTopUp'
     ).controller('queryController', function($scope, $timeout, anonymousTopUpService) {
 
-        $scope.app = {
+        this.app = {
             title : 'Step 1'
         };
 
-        $scope.mobile = {
+        this.mobile = {
             number: '',
             status: false,
             validations: ''
         };
 
-        $scope.queryNumber = function() {
-            anonymousTopUpService.queryMobileNumber($scope.mobile.number
-                    ).success(function(data, status) {
-                if (status === 200) {
-
-                    processResponse(data);
-                } else {
-                    $scope.mobile.status = false;
-                    $scope.mobile.validations = 'Error processing query';
+        this.queryNumber = function() {
+            var responseContainer = this.mobile;
+            anonymousTopUpService.queryMobileNumber(this.mobile.number).success(function(data, status) {
+                if(data.status === 'ACTIVE'){
+                    responseContainer.status = true;
+                    responseContainer.validations = '';
+                    
+                }else if(responseContainer.number !== ''){
+                    responseContainer.status = false;
+                    responseContainer.validations = 'This is not a valid mobile number';
+                    
                 }
+                
+            }).error(function(data, status){
+                responseContainer.status = false;
+                responseContainer.validations = 'Error processing query';
+                
             });
-        }
-
-        function processResponse(data) {
-            if(data.status === 'ACTIVE'){
-                $scope.mobile.status = true;
-                $scope.mobile.validations = '';
-            }else if($scope.mobile.number !== ''){
-                $scope.mobile.status = false;
-                $scope.mobile.validations = 'This is not a valid mobile number';
-            }
-        }
+        };
+        
+        this.goTopup = function() {
+            this.mobile.validations = 'Not implemented yet'; 
+        };
 
     }
 );
