@@ -6,10 +6,6 @@
 angular.module('appTopUp'
     ).controller('queryController', function($scope, $timeout, anonymousTopUpService) {
 
-        this.app = {
-            title : 'Step 1'
-        };
-
         this.mobile = {
             number: '',
             status: false,
