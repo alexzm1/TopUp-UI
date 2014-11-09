@@ -1,12 +1,13 @@
-<div>
+<form name="main.form" ng-submit="main.goTopup()">
     <div>
-        <label>Type your 10 digits number</label> 
-        <input ng-model="main.mobile.number" type="number" ng-change="main.queryNumber()"/>
+        <label>Type your 10 digits number</label>
+        <mobile-number ng-model="main.mobile.number"></mobile-number>
     </div>
-    <div>
+    <div ng-show="main.mobile.validations">
         <label>{{ main.mobile.validations }}</label>
     </div>
     <div>
-        <button ng-disabled="!main.mobile.status" ng-click="main.goTopup()"/>Next</button>
+        <!--<submit ng-disabled="!main.mobile.status"/>Next</submit> -->
+        <button ng-disabled="!main.form.$valid" type="submit"/>Next</button>
     </div>
-</div>
+</form>

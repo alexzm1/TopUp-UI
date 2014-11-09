@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-angular.module('appTopUp', ['anonymousServices', 'ngRoute']
+angular.module('appTopUp', ['anonymousServices', 'ngRoute', 'ngStorage']
         ).config(['$routeProvider', 
             function($routeProvider){
                 'use strict';
@@ -13,6 +13,10 @@ angular.module('appTopUp', ['anonymousServices', 'ngRoute']
                     templateUrl: 'templates/anonymous/mobile-number-form.html',
                     controllerAs: 'main',
                     controller: 'queryController'
+                }).when('/anonymous/step2', {
+                    templateUrl: 'templates/anonymous/topup-quantity-form.html',
+                    controllerAs: 'main',
+                    controller: 'quantityController'
                 }).otherwise({
                     templateUrl: '404.html'
                 });

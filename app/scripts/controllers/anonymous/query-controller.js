@@ -4,12 +4,16 @@
  * and open the template in the editor.
  */
 angular.module('appTopUp'
-    ).controller('queryController', function($scope, $timeout, anonymousTopUpService) {
+    ).controller('queryController', function($sessionStorage, $location, anonymousTopUpService) {
 
+        this.storage = $sessionStorage;
+    
+        this.form = {
+            validation : ''
+        };
+    
         this.mobile = {
-            number: '',
-            status: false,
-            validations: ''
+            number: ''
         };
 
         this.queryNumber = function() {
@@ -33,7 +37,14 @@ angular.module('appTopUp'
         };
         
         this.goTopup = function() {
-            this.mobile.validations = 'Not implemented yet'; 
+            if(this.form){
+                var timeStamp = new Date().getTime();
+                this.storage[timeStamp] = this.mobile;
+                $location.url('/anonymous/step2?transId='+timeStamp);
+            }else{
+                this.form()
+            }
+            
         };
 
     }
