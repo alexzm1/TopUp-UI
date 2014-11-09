@@ -10,13 +10,18 @@ angular.module('appTopUp', ['anonymousServices', 'ngRoute', 'ngStorage']
                 $routeProvider.when('/',{
                     redirectTo:'/anonymous/step1'
                 }).when('/anonymous/step1', {
-                    templateUrl: 'templates/anonymous/mobile-number-form.html',
+                    templateUrl: 'views/anonymous/mobile-number-form.html',
                     controllerAs: 'main',
                     controller: 'queryController'
                 }).when('/anonymous/step2', {
-                    templateUrl: 'templates/anonymous/topup-quantity-form.html',
+                    templateUrl: 'views/anonymous/topup-quantity-form.html',
                     controllerAs: 'main',
-                    controller: 'quantityController'
+                    controller: 'quantityController',
+                    resolve : {
+                        mobileQueryResponse : function(anonymousTopUpService){
+                            anonymousTopUpService.queryMobileNumber();
+                        }
+                    }
                 }).otherwise({
                     templateUrl: '404.html'
                 });
