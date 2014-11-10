@@ -1,31 +1,30 @@
 angular.module('anonymousServices', []
         ).factory('anonymousTopUpService', 
-            function($http, $q, $routeParams, $sessionStorage){
+            function($http, $q, $sessionStorage){
                 'use strict';
                 var apiUrl = 'http://localhost:8080/TopUp-Services/api';
                     
                 return {
-                    queryMobileNumber: function() {
+                    queryMobileNumber: function(transId) {
                             var defer = $q.defer();
+                            var mobile = $sessionStorage[transId];
                             $http({
                                 method: 'GET',
-                                url: apiUrl + '/telephone/' + $sessionStorage[$routeParams.transId]
+                                url: apiUrl + '/telephone/' + mobile.number
                                 }).success(function(data) {
                                     if(data.status === 'ACTIVE'){
+                                        defer.resolve(data);
                                         
-                                        defer.resolve({status : true});
-                                        return defer.promise;
                                     }else {
-                                        
                                         defer.reject({validations : 'This is not a valid mobile number'});
-                                        return defer.promise;
+                                        
                                     }
-
+                                
                                 }).error(function(){
+                                
                                     defer.reject({validations : 'Error processing query'});
-                                    return defer.promise;
                                 });
-                            
+                            return defer.promise;
                         }
                     };
                 }

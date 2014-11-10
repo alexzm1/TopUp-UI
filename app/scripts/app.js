@@ -14,15 +14,17 @@ angular.module('appTopUp', ['anonymousServices', 'ngRoute', 'ngStorage']
                     controllerAs: 'main',
                     controller: 'queryController'
                 }).when('/anonymous/step2', {
-                    templateUrl: 'views/anonymous/topup-quantity-form.html',
+                    templateUrl: 'views/anonymous/quantity-form.html',
                     controllerAs: 'main',
                     controller: 'quantityController',
                     resolve : {
-                        mobileQueryResponse : function(anonymousTopUpService){
-                            anonymousTopUpService.queryMobileNumber();
+                        mobileQueryResponse: function ($location, anonymousTopUpService){
+                                var params = $location.search();
+                                return anonymousTopUpService.queryMobileNumber(params.transId);
+                            }
                         }
                     }
-                }).otherwise({
+                ).otherwise({
                     templateUrl: '404.html'
                 });
             }]);
