@@ -1,0 +1,10 @@
+<form name="main.form" ng-submit="main.submit()">
+    <div>
+        <label>Type your 10 digits number</label>
+        <mobile-number ng-model="main.mobile.number"></mobile-number>
+    </div>
+    <validation-error ng-model="main.mobile.validations"></validation-error>
+    <div>
+        <button ng-disabled="!main.form.$valid" type="submit"/>Next</button>
+    </div>
+</form>

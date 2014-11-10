@@ -3,17 +3,28 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-angular.module('appTopUp', ['anonymousServices', 'ngRoute']
+angular.module('appTopUp', ['anonymousServices', 'ngRoute', 'ngStorage']
         ).config(['$routeProvider', 
             function($routeProvider){
                 'use strict';
                 $routeProvider.when('/',{
                     redirectTo:'/anonymous/step1'
                 }).when('/anonymous/step1', {
-                    templateUrl: 'templates/anonymous/mobile-number-form.html',
+                    templateUrl: 'views/anonymous/mobile-number-form.html',
                     controllerAs: 'main',
                     controller: 'queryController'
-                }).otherwise({
+                }).when('/anonymous/step2', {
+                    templateUrl: 'views/anonymous/quantity-form.html',
+                    controllerAs: 'main',
+                    controller: 'quantityController',
+                    resolve : {
+                        mobileQueryResponse: function ($location, anonymousTopUpService){
+                                var params = $location.search();
+                                return anonymousTopUpService.queryMobileNumber(params.transId);
+                            }
+                        }
+                    }
+                ).otherwise({
                     templateUrl: '404.html'
                 });
             }]);

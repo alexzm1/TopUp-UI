@@ -13,6 +13,7 @@
     <link rel="stylesheet" href="styles/foundation.css">
     <link rel="stylesheet" href="styles/normalize.css">
     <link rel="stylesheet" href="styles/main.css">
+    <link rel="stylesheet" href="styles/topup.css">
     <!-- endbuild -->
     <!--[if lt IE 9]>
     <script src="bower_components/es5-shim/es5-shim.js"></script>
@@ -24,6 +25,8 @@
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
+    <script src="bower_components/ngstorage/ngStorage.js"></script>
+    <script src="bower_components/underscore/underscore.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
 
@@ -34,7 +37,12 @@
     <!-- Finish: Services -->
     <!-- Start: Controllers -->
     <script src="scripts/controllers/anonymous/query-controller.js"></script>
+    <script src="scripts/controllers/anonymous/quantity-controller.js"></script>
     <!-- Finish: Controllers -->
+    <!-- Start: Directives -->
+    <script src="scripts/directives/mobile-number-directive.js"></script>
+    <script src="scripts/directives/validation-error-directive.js"></script>
+    <!-- Finish: Directives -->
     <!-- endbuild -->
     <title>Top Up</title>
   </head>
