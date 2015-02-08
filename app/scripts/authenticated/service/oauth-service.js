@@ -1,10 +1,9 @@
 angular.module('authenticatedService', []
               ).factory('oauthService',
-    function ($http, $q) {
+    function ($http, $q, $location) {
         'use strict';
     
         var apiUrl = './api';
-    
         var oauth = OAuth({
             consumer: {
                 public: '3a4393c3da1a4e316ee66c0cc61c71',
@@ -18,7 +17,7 @@ angular.module('authenticatedService', []
                 var defer = $q.defer();
                 
                 var request = {
-                    url: apiUrl+'/oauth/oauth_request_token',
+                    url: $location.protocol()+'://'+$location.host()+':'+$location.port()+'/TopUp-Services/api'+'/oauth/oauth_request_token',
                     method: 'POST',
                     data: {
                         oauth_callback: 'google.com'
