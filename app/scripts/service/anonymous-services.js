@@ -1,8 +1,9 @@
 angular.module('anonymousServices', []
-        ).factory('anonymousTopUpService', 
-            function($http, $q, $sessionStorage){
+        ).factory('anonymousTopUpService',
+            function ($http, $q, $sessionStorage) {
                 'use strict';
-                var apiUrl = 'http://localhost:8080/TopUp-Services/api';
+                //var apiUrl = 'http://jbosswildfly-topup.rhcloud.com/api';
+                var apiUrl = './api';
                     
                 return {
                     queryMobileNumber: function(transId) {
@@ -14,14 +15,10 @@ angular.module('anonymousServices', []
                                 }).success(function(data) {
                                     if(data.status === 'ACTIVE'){
                                         defer.resolve(data);
-                                        
                                     }else {
                                         defer.reject({validations : 'This is not a valid mobile number'});
-                                        
                                     }
-                                
                                 }).error(function(){
-                                
                                     defer.reject({validations : 'Error processing query'});
                                 });
                             return defer.promise;

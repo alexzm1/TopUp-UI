@@ -23,17 +23,23 @@
     <!-- build:js scripts/vendor.js -->
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
+    <script src="bower_components/json3/lib/json3.js"></script>
     <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
     <script src="bower_components/underscore/underscore.js"></script>
+    <script src="bower_components/oauth-1.0a/oauth-1.0a.js"></script>
     <!-- endbower -->
     <!-- endbuild -->
+    <script src="bower_components/crypto-js/components/core.js"></script>
+    <script src="bower_components/crypto-js/components/enc-base64.js"></script>
+    <script src="bower_components/crypto-js/rollups/hmac-sha1.js"></script>
 
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <!-- Start: Services -->
     <script src="scripts/service/anonymous-services.js"></script>
+    <script src="scripts/authenticated/service/oauth-service.js"></script>
     <!-- Finish: Services -->
     <!-- Start: Controllers -->
     <script src="scripts/controllers/anonymous/query-controller.js"></script>
