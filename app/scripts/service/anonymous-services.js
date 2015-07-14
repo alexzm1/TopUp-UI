@@ -2,7 +2,7 @@ angular.module('anonymousServices', []
         ).factory('anonymousTopUpService', 
             function($http, $q, $sessionStorage){
                 'use strict';
-                var apiUrl = 'http://localhost:8080/TopUp-Services/api';
+                var apiUrl = './TopUp-Services/api';
                     
                 return {
                     queryMobileNumber: function(transId) {
