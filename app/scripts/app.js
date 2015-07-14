@@ -3,7 +3,7 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-angular.module('appTopUp', ['anonymousServices', 'ngRoute', 'ngStorage']
+angular.module('appTopUp', ['anonymousServices', 'ngRoute', 'ngStorage', 'mm.foundation']
         ).config(['$routeProvider', 
             function($routeProvider){
                 'use strict';

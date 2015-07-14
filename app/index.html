@@ -1,5 +1,5 @@
 <!doctype html>
-<html class="no-js" ng-app="appTopUp">
+<html class="no-js" ng-app="appTopUp" ng-controller="AppCtrl">
   <head>
     <meta charset="utf-8">
     <meta name="description" content="">
@@ -24,7 +24,6 @@
     <!-- bower:js -->
     <script src="bower_components/angular/angular.js"></script>
     <script src="bower_components/json3/lib/json3.js"></script>
-    <script src="bower_components/angular-resource/angular-resource.js"></script>
     <script src="bower_components/angular-route/angular-route.js"></script>
     <script src="bower_components/angular-foundation/mm-foundation-tpls.js"></script>
     <script src="bower_components/ngstorage/ngStorage.js"></script>
@@ -35,9 +34,11 @@
     <!-- build:js({.tmp,app}) scripts/scripts.js -->
     <script src="scripts/app.js"></script>
     <!-- Start: Services -->
+    <script src="scripts/constants/app-paths.js"></script>
     <script src="scripts/service/anonymous-services.js"></script>
     <!-- Finish: Services -->
     <!-- Start: Controllers -->
+    <script src="scripts/controllers/app-controller.js"></script>
     <script src="scripts/controllers/anonymous/query-controller.js"></script>
     <script src="scripts/controllers/anonymous/quantity-controller.js"></script>
     <!-- Finish: Controllers -->
@@ -54,6 +55,7 @@
     <![endif]-->
 
     <!-- Add your site or application content here -->
+    <validation-error></validation-error>
     <div ng-view></div>
   </body>
     

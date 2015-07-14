@@ -5,7 +5,7 @@
  */
 angular.module('appTopUp'
     ).controller('queryController', 
-        ['$sessionStorage', '$location', 
+        ['$sessionStorage', '$location', '$routeParams',
             function($sessionStorage, $location, $routeParams) {
                 
                 this.storage = $sessionStorage;

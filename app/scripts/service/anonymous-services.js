@@ -14,15 +14,12 @@ angular.module('anonymousServices', []
                                 }).success(function(data) {
                                     if(data.status === 'ACTIVE'){
                                         defer.resolve(data);
-                                        
                                     }else {
-                                        defer.reject({validations : 'This is not a valid mobile number'});
-                                        
+                                        defer.reject({message : 'This is not a valid mobile number'});
                                     }
-                                
                                 }).error(function(){
                                 
-                                    defer.reject({validations : 'Error processing query'});
+                                    defer.reject({message : 'Error processing query'});
                                 });
                             return defer.promise;
                         }

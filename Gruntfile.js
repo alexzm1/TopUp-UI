@@ -73,9 +73,9 @@ module.exports = function (grunt) {
         }
       },
       proxies : {
-          context : "/TopUp-Services",
-          host: "localhost",
-          port: "8080",
+          context : '/TopUp-Services',
+          host: 'localhost',
+          port: '8080',
           https: false,
           xforward: false
       },
