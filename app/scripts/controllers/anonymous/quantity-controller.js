@@ -4,6 +4,13 @@ angular.module('appTopUp'
             function($sessionStorage, $routeParams, mobileQueryResponse){
                 this.storage = $sessionStorage;
                 this.mobile = this.storage[$routeParams.transId];
+                this.payment = {
+                    amount: 5,
+                    number : '',
+                    expirationMonth : 12,
+                    expirationYear : new Date().getFullYear(),
+                    ccv : ''
+                };
                 this.queryResponse = mobileQueryResponse;
                 this.form = {
                     validation : ''

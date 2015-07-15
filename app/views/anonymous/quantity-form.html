@@ -4,9 +4,24 @@
     </div>
     <div>
         <label>Select quantity</label>
-        <input ng-model="main.mobile.quantity" type="number"/>
+        <input name="amount" ng-model="main.payment.amount" type="number" min="5"/>
+        <alert type="warning" ng-show="!main.form.amount.$valid">Minimum quantity is 5</alert>
     </div>
-    <validation-error ng-model="main.mobile.validations"></validation-error>
+    <div>
+    <div>
+        <label>Credit Card Number</label>
+        <input name="paymentNumber" ng-model="main.payment.number" type="number" ng-minlength="16"/>
+        <alert type="warning" ng-show="!main.form.paymentNumber.$valid">Credit card number should be at least 16 characters</alert>
+    </div>
+    <div>
+        <label>Expiration Date</label>
+        <expiration-date expiration-month="main.payment.expirationMonth" expiration-year="main.payment.expirationYear"></expiration-date>
+    </div>
+    <div>
+        <label>CCV</label>
+        <input name="ccv" ng-model="main.payment.ccv" type="number" ng-minlength="3"/>
+        <alert type="warning" ng-show="!main.form.ccv.$valid">CCV number should be at least 3 characters</alert>
+    </div>
     <div>
         <button ng-disabled="!main.form.$valid" type="submit"/>Next</button>
     </div>
