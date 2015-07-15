@@ -1,9 +1,10 @@
 angular.module('appTopUp'
     ).controller('quantityController', 
         ['$sessionStorage', '$routeParams', 'mobileQueryResponse',
-            function($sessionStorage, $routeParams, mobileQueryResponse){
+            function($sessionStorage, $routeParams, mobileQueryResponse, $routeScope){
                 this.storage = $sessionStorage;
                 this.mobile = this.storage[$routeParams.transId];
+                this.queryResponse = mobileQueryResponse;
                 this.payment = {
                     amount: 5,
                     number : '',
@@ -11,13 +12,9 @@ angular.module('appTopUp'
                     expirationYear : new Date().getFullYear(),
                     ccv : ''
                 };
-                this.queryResponse = mobileQueryResponse;
-                this.form = {
-                    validation : ''
-                };
                 
                 this.submit = function (){
-                    this.mobile.validations = 'Not implemented yet!';
+                    angular.noop();
                 }
             }
         ]);

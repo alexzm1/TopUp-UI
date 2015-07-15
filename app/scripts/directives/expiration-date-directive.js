@@ -2,7 +2,7 @@ angular.module('appTopUp').directive('expirationDate', function(){
 	'use strict';
 	return {
 		restrict: 'E',
-		templateUrl: 'template/directives/expiration-date.html',
+		templateUrl: 'views/directives/expiration-date.html',
 		controllerAs: 'expDate',
 		scope: {
 			expirationMonth: '=',
