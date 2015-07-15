@@ -5,18 +5,25 @@
  */
 angular.module('appTopUp'
     ).controller('queryController', 
-        ['$sessionStorage', '$location', 
-            function($sessionStorage, $location) {
-
+        ['$sessionStorage', '$location', '$routeParams',
+            function($sessionStorage, $location, $routeParams) {
+                
                 this.storage = $sessionStorage;
-
                 this.form = {
                     validation : ''
                 };
-
                 this.mobile = {
                     number: ''
                 };
+                
+                var transId = $routeParams.transId;
+                
+                if(transId){
+                    var sessionPhone = this.storage[transId];
+                    if(sessionPhone){
+                        this.mobile = sessionPhone;
+                    }   
+                }
 
                 this.submit = function() {
                     var timeStamp = new Date().getTime();

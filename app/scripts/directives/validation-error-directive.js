@@ -2,10 +2,15 @@ angular.module('appTopUp').directive('validationError', function(){
     'use strict';
     return{
         restrict : 'E',
-        template: function(tElement, tAttrs){
-            return '<div ng-show="'+tAttrs.ngModel+'">'+
-            '<label>{{'+tAttrs.ngModel+'}}</label>'+
-            '</div>';
+        controller: function($scope, $rootScope){
+            this.alerts = $rootScope.alerts;
+            this.close = function(index){
+                this.alerts.splice(index,1);
+            };
+        },
+        controllerAs: 'validationeError',
+        template: function(){
+            return '<alert ng-repeat="alert in validationeError.alerts" type="alert.type" close="validationeError.close($index)">{{alert.message}}</alert>';
         }
     };
 });

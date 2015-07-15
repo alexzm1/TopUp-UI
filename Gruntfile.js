@@ -67,7 +67,17 @@ module.exports = function (grunt) {
         port: 9000,
         // Change this to '0.0.0.0' to access the server from outside.
         hostname: 'localhost',
-        livereload: 35729
+        livereload: 35729,
+        middleware: function (connect, options, defaultMiddleware){
+            return [require('grunt-connect-proxy/lib/utils').proxyRequest].concat(defaultMiddleware );
+        }
+      },
+      proxies : {
+          context : '/TopUp-Services',
+          host: 'localhost',
+          port: '8080',
+          https: false,
+          xforward: false
       },
       livereload: {
         options: {
@@ -380,6 +390,7 @@ module.exports = function (grunt) {
       'wiredep',
       'concurrent:server',
       'autoprefixer',
+      'configureProxies:server',
       'connect:livereload',
       'watch'
     ]);

@@ -1,6 +1,6 @@
 {
   "name": "topupui",
-  "version": "0.0.0",
+  "version": "0.1.0",
   "dependencies": {},
   "devDependencies": {
     "grunt": "^0.4.1",
@@ -29,6 +29,7 @@
     "time-grunt": "^0.3.1",
     "karma-jasmine": "~0.1.5",
     "grunt-karma": "~0.8.3",
+    "grunt-connect-proxy": "0.2.0",
     "karma-phantomjs-launcher": "~0.1.4"
   },
   "engines": {
