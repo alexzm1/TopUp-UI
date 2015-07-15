@@ -1,4 +1,10 @@
 language: node_js
+sudo: false
+before_install:
+  - "export DISPLAY=:99.0"
+  - "sh -e /etc/init.d/xvfb start"
+  - gem install sass
+  - gem install compass
 node_js:
   - '0.12.3'
 before_script:
