@@ -1,5 +1,5 @@
 angular.module('appTopUp'
-    ).controller('quantityController', 
+    ).controller('QuantityController', 
         ['$sessionStorage', '$routeParams', 'mobileQueryResponse',
             function($sessionStorage, $routeParams, mobileQueryResponse, $routeScope){
                 this.storage = $sessionStorage;

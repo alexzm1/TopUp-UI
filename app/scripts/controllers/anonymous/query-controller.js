@@ -17,7 +17,6 @@ angular.module('appTopUp'
                 };
                 
                 var transId = $routeParams.transId;
-                
                 if(transId){
                     var sessionPhone = this.storage[transId];
                     if(sessionPhone){
