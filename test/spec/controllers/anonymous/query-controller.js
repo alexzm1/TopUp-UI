@@ -1,13 +1,10 @@
 'use strict';
 
 describe('Controller: queryController', function(){
-	var scope, 
-		queryController,
-		sessionStorage = {},
+	var controller,
 		location = {
 			url: angular.noop
-		},
-		routeParams = {};
+		};
 
 	//Mocked modules
 	angular.module('ngStorage',[]);
@@ -15,46 +12,39 @@ describe('Controller: queryController', function(){
 
 	beforeEach(module('appTopUp'));
 
-	
-
 	beforeEach(function(){
 		//Soy on location's property url
 		spyOn(location, 'url')
 		
-		inject(function($controller, $rootScope){
-				scope = $rootScope.$new();
-				queryController = $controller('queryController', {
-					$sessionStorage: sessionStorage,
-					$location: location,
-					$routeParams: routeParams
-				});
-			}) 
+		inject(function($controller){
+				controller = $controller;
+			})
 	});
+
+	function setupController(routeParams, sessionStorage){
+		return controller('queryController', {
+					$routeParams: routeParams,
+					$location: location,
+					$sessionStorage: sessionStorage,
+				});
+	}
 	
 	it('Should have an empty mobile number', function(){
 
-		expect(queryController.mobile.number).toBe('');
+		expect(setupController({}).mobile.number).toBe('');
 	});
 
 	it('Should have the mobile number stored in sessionStorage', function(){
-		
-		routeParams.transId = "12345";
-		sessionStorage["12345"] = {number: "804765345"};
-
-		inject(function($controller, $rootScope){
-				scope = $rootScope.$new();
-				queryController = $controller('queryController', {
-					$sessionStorage: sessionStorage,
-					$location: location,
-					$routeParams: routeParams
-				});
-			});
-
-		expect(queryController.mobile.number).toBe(sessionStorage["12345"].number);
+		var storage = {
+			'12345': {
+				'number': '804765345'
+			}
+		};
+		expect(setupController({'transId': '12345'}, storage).mobile.number).toBe(storage['12345'].number);
 	});
 
 	it('location have to be called once', function(){
-		queryController.submit();
+		setupController({},{}).submit();
 		expect(location.url).toHaveBeenCalled();
 	});
 
