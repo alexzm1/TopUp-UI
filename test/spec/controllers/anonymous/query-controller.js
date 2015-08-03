@@ -13,12 +13,12 @@ describe('Controller: queryController', function(){
 	beforeEach(module('appTopUp'));
 
 	beforeEach(function(){
-		//Soy on location's property url
+		//Spy on location's property url
 		spyOn(location, 'url')
 		
 		inject(function($controller){
 				controller = $controller;
-			})
+			});
 	});
 
 	function setupController(routeParams, sessionStorage){
