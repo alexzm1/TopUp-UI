@@ -8,7 +8,8 @@ angular.module('anonymousServices', []
                     queryMobileNumber: function(transId) {
                             var defer = $q.defer();
                             var mobile = $sessionStorage[transId];
-                            $http({
+                            if(mobile){
+                                $http({
                                 method: 'GET',
                                 url: apiUrl + '/telephone/' + mobile.number
                                 }).success(function(data) {
@@ -18,9 +19,11 @@ angular.module('anonymousServices', []
                                         defer.reject({message : 'This is not a valid mobile number'});
                                     }
                                 }).error(function(){
-                                
                                     defer.reject({message : 'Error processing query'});
                                 });
+                            }else{
+                                defer.reject({message : 'Invalid transId'});
+                            }
                             return defer.promise;
                         }
                     };
